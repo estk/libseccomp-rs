@@ -1,5 +1,16 @@
 [workspace]
-members = [
-    "libseccomp",
-    "libseccomp-sys",
-]
+members = ["libseccomp", "libseccomp-sys", "libseccomp-gen"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+authors = ["Manabu Sugimoto <Manabu.Sugimoto@sony.com>"]
+repository = "https://github.com/libseccomp-rs/libseccomp-rs"
+keywords = ["bindings", "seccomp", "linux", "containers", "security"]
+categories = ["os", "api-bindings"]
+rust-version = "1.53"
+readme = "README.md"
+
+[workspace.dependencies]
+libseccomp-sys = { path = "./libseccomp-sys" }

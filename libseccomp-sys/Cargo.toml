@@ -1,11 +1,9 @@
 [package]
 name = "libseccomp-sys"
-version = "0.2.1"
-authors = ["Manabu Sugimoto <Manabu.Sugimoto@sony.com>"]
-license = "MIT OR Apache-2.0"
-description = "Raw FFI Bindings for the libseccomp Library"
-repository = "https://github.com/libseccomp-rs/libseccomp-rs"
-categories = ["seccomp", "api-bindings"]
-edition = "2018"
-rust-version = "1.46"
+version.workspace = true
+edition.workspace = true
+description = "Raw hand-written FFI Bindings for the libseccomp Library."
 readme = "README.md"
+
+[build-dependencies]
+libloading = "0.7.4"

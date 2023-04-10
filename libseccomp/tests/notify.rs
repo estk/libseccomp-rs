@@ -1,5 +1,3 @@
-#![cfg(libseccomp_v2_5)]
-
 use libc::{dup3, O_CLOEXEC};
 use libseccomp::*;
 use std::thread;
@@ -139,9 +137,9 @@ fn test_error() {
 }
 
 #[test]
-fn resp_flags_from_bits_preserve() {
+fn resp_flags_from_bits_retain() {
     assert_eq!(
-        ScmpNotifRespFlags::from_bits_preserve(u32::MAX).bits(),
+        ScmpNotifRespFlags::from_bits_retain(u32::MAX).bits(),
         u32::MAX
     );
 }

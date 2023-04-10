@@ -43,14 +43,6 @@ bitflags! {
         const CONTINUE = SECCOMP_USER_NOTIF_FLAG_CONTINUE;
     }
 }
-impl ScmpNotifRespFlags {
-    /// Convert from underlying bit representation, preserving all bits (even those not corresponding to a defined flag).
-    // https://github.com/bitflags/bitflags/issues/263
-    #[must_use]
-    pub fn from_bits_preserve(bits: u32) -> Self {
-        Self { bits }
-    }
-}
 
 /// Userspace notification response flag
 ///
@@ -60,7 +52,7 @@ impl ScmpNotifRespFlags {
     since = "0.3.0",
     note = "Use ScmpNotifRespFlags::CONTINUE or ScmpNotifRespFlags::CONTINUE.bits"
 )]
-pub const NOTIF_FLAG_CONTINUE: u32 = ScmpNotifRespFlags::CONTINUE.bits;
+pub const NOTIF_FLAG_CONTINUE: u32 = ScmpNotifRespFlags::CONTINUE.bits();
 
 impl ScmpFilterContext {
     /// Gets a file descriptor for the userspace notification associated with the
@@ -271,7 +263,7 @@ impl ScmpNotifResp {
             id,
             val,
             error: 0,
-            flags: flags.bits,
+            flags: flags.bits(),
         }
     }
 
@@ -295,7 +287,7 @@ impl ScmpNotifResp {
             id,
             val: 0,
             error,
-            flags: flags.bits,
+            flags: flags.bits(),
         }
     }
 
@@ -317,7 +309,7 @@ impl ScmpNotifResp {
             id,
             val: 0,
             error: 0,
-            flags: ScmpNotifRespFlags::CONTINUE.bitor(flags).bits,
+            flags: ScmpNotifRespFlags::CONTINUE.bitor(flags).bits(),
         }
     }
 
