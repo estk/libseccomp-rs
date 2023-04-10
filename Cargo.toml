@@ -1,5 +1,5 @@
 [workspace]
-members = ["libseccomp", "libseccomp-sys", "libseccomp-gen"]
+members = ["libseccomp", "libseccomp-sys"]
 
 [workspace.package]
 version = "0.1.0"

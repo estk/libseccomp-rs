@@ -1,1 +1,0 @@
-#include "seccomp.h.in"

@@ -4,6 +4,3 @@ version.workspace = true
 edition.workspace = true
 description = "Raw hand-written FFI Bindings for the libseccomp Library."
 readme = "README.md"
-
-[build-dependencies]
-libloading = "0.7.4"
