@@ -3,13 +3,7 @@
 // Copyright 2021 Sony Group Corporation
 //
 
-use std::{
-    env,
-    fmt::Display,
-    io::{self, ErrorKind},
-    process::{Command, Output},
-    str::FromStr,
-};
+use std::{env, fmt::Display, str::FromStr};
 
 const LIBSECCOMP_LIB_PATH: &str = "LIBSECCOMP_LIB_PATH";
 const LIBSECCOMP_LINK_TYPE: &str = "LIBSECCOMP_LINK_TYPE";
