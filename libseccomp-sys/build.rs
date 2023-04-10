@@ -12,9 +12,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("cargo:rerun-if-env-changed={}", LIBSECCOMP_LIB_PATH);
     println!("cargo:rerun-if-env-changed={}", LIBSECCOMP_LINK_TYPE);
 
-    let custom_path = env::var(LIBSECCOMP_LIB_PATH);
+    // todo(eas): need to `sudo ln -s ./libseccomp.so.2 /usr/lib/x86_64-linux-gnu/libseccomp.so`
 
-    if let Ok(path) = custom_path {
+    if let Ok(path) = env::var(LIBSECCOMP_LIB_PATH) {
         println!("cargo:rustc-link-search=native={}", path);
     }
 
@@ -24,7 +24,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .transpose()?;
 
     if let Some(lt) = custom_type {
-        println!("cargo:rustc-link-lib={}=seccomp", lt);
+        // println!("cargo:rustc-link-lib={lt}:+verbatim=libseccomp.so.2");
+        println!("cargo:rustc-link-lib={lt}=seccomp");
     } else {
         println!("cargo:rustc-link-lib=seccomp");
     }
